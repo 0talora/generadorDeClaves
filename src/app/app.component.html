@@ -1,0 +1,56 @@
+<div class="contenedor-principal">
+
+  <div class="titulo">
+    <h2>Generador de contraseñas</h2>
+  </div>
+
+  <div class="generador">
+    <div class="toast" [class.show]="mostrarToast">¡Clave copiada!</div>
+
+    <div class="clave">
+      <span>{{ claveGenerada }}</span>
+      <img class="btn-copiar-img" src="assets/imgs/copy.svg" alt="Copiar" (click)="copiarClave()">
+
+    </div>
+
+    <div class="indicador-seguridad" [ngClass]="nivelSeguridad.toLowerCase()">
+      Seguridad: {{ nivelSeguridad }}
+    </div>
+
+    <div class="configuracion">
+      <div class="mayusDiv">
+        <input type="checkbox" [(ngModel)]="mayus" (change)="generarClave()">
+        <span>Mayúsculas</span>
+      </div>
+
+      <div class="minDiv">
+        <input type="checkbox" [(ngModel)]="min" (change)="generarClave()">
+        <span>Minúsculas</span>
+      </div>
+
+      <div class="simbolosDiv">
+        <input type="checkbox" [(ngModel)]="simbolos" (change)="generarClave()">
+        <span>Símbolos</span>
+      </div>
+
+      <div class="numsDiv">
+        <input type="checkbox" [(ngModel)]="nums" (change)="generarClave()">
+        <span>Números</span>
+      </div>
+
+      <input type="range" id="length" name="length" min="4" max="100" (input)="generarClave()" [(ngModel)]="longitud">
+      <label>Longitud de la contraseña: {{longitud}}</label>
+    </div>
+
+    <div class="btnGenerar">
+
+      <button class="btn-copiar-movil" (click)="copiarClave()">Copiar</button>
+
+      <button (click)="generarClave()">Generar</button>
+    </div>
+
+  </div>
+
+</div>
+
+<router-outlet />
